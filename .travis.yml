@@ -3,23 +3,23 @@ service:
   - docker
 
 before_install:
-  - docker build -t heinnerzapata/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t hzapatae/react-test -f ./client/Dockerfile.dev ./client
 
-script:
-  - docker run -e CI=true heinnerzapata/react-test npm test
+script:s
+  - docker run -e CI=true hzapatae/react-test npm test
 
 after_success:
-  - docker build -t heinnerzapata/multi-client ./client
-  - docker build -t heinnerzapata/multi-nginx ./nginx
-  - docker build -t heinnerzapata/multi-server ./server
-  - docker build -t heinnerzapata/multi-worker ./worker
+  - docker build -t hzapatae/multi-client ./client
+  - docker build -t hzapatae/multi-nginx ./nginx
+  - docker build -t hzapatae/multi-server ./server
+  - docker build -t hzapatae/multi-worker ./worker
   # log into to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # push
-  - docker push heinnerzapata/multi-worker
-  - docker push heinnerzapata/multi-nginx
-  - docker push heinnerzapata/multi-server
-  - docker push heinnerzapata/multi-client
+  - docker push hzapatae/multi-worker
+  - docker push hzapatae/multi-nginx
+  - docker push hzapatae/multi-server
+  - docker push hzapatae/multi-client
 
 
 
